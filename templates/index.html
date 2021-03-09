@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block main %}
+        <div class="alert alert-primary" role="alert"> {{ message }}</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col"># of shares</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total value</th>
+                </tr>
+            </thead>
+        <tbody>
+            {% for stock in stocks %}
+            <tr scope="row">
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.shares }}</td>
+                <td>{{ stock.price }} </td>
+                <td class="sums">{{ stock.total }}</td>
+             {% endfor %}
+            {% block body %}
+            <tr scope="row">
+                <td>Cash</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="cash">{{ cash }}</td>
+            </tr>
+            {% endblock %}
+            <tr scope="row">
+                <td>TOTAL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="total">{{ value }}</td>
+            </tr>
+            </tr>
+        </tbody>
+        </table>
+
+{% endblock %}
